@@ -11,6 +11,7 @@ import QuienesSomos from './QuienesSomosComponent';
 import Contacto from './ContactoComponent';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { colorGaztaroaClaro, colorGaztaroaOscuro } from '../comun/comun';
 
 
 const Stack = createStackNavigator();
@@ -43,7 +44,7 @@ function HomeNavegador({ navigation }) {
     screenOptions={{
     headerMode: 'screen',
     headerTintColor: '#fff',
-    headerStyle: { backgroundColor: '#015afc' },
+    headerStyle: { backgroundColor: colorGaztaroaOscuro },
     headerTitleStyle: { color: '#fff' },
     headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
     }}
@@ -65,7 +66,7 @@ function HomeNavegador({ navigation }) {
       screenOptions={{
       headerMode: 'screen',
       headerTintColor: '#fff',
-      headerStyle: { backgroundColor: '#015afc' },
+      headerStyle: { backgroundColor: colorGaztaroaOscuro },
       headerTitleStyle: { color: '#fff' },
       headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
       }}
@@ -89,7 +90,7 @@ function HomeNavegador({ navigation }) {
       screenOptions={{
       headerMode: 'screen',
       headerTintColor: '#fff',
-      headerStyle: { backgroundColor: '#015afc' },
+      headerStyle: { backgroundColor: colorGaztaroaOscuro },
       headerTitleStyle: { color: '#fff' },
       headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
       
@@ -115,7 +116,7 @@ function HomeNavegador({ navigation }) {
       screenOptions={{
       headerShown: false,
       drawerStyle: {
-      backgroundColor: '#c2d3da',
+      backgroundColor: colorGaztaroaClaro,
       },
       }}>
         <Drawer.Screen name="Campo Base" component={HomeNavegador} 
@@ -181,7 +182,7 @@ function CalendarioNavegador({ navigation }) {
       screenOptions={{
         headerMode: 'float',
         headerTintColor: '#fff',
-        headerStyle: { backgroundColor: '#015afc' },
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
         //headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
       }}
@@ -224,7 +225,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   drawerHeader: {
-    backgroundColor: '#015afc',
+    backgroundColor: colorGaztaroaOscuro,
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
