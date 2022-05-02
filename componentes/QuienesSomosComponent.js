@@ -5,6 +5,7 @@ import { Card } from 'react-native-elements';
 import { ListItem, Avatar } from 'react-native-elements';
 import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
+import { IndicadorActividad } from './IndicadorActividadComponent'
 
 const mapStateToProps = state => {
     return {
@@ -43,41 +44,60 @@ function Historia() {
 class QuienesSomos extends Component {
 
     render() {
-    const renderActividadesItem=({item, index}) => {
-        return (
-            <ListItem
-                key={index}
-                bottomDivider>
-               <Avatar source={{uri: baseUrl + item.imagen}}/>
-                <ListItem.Content>
+        const renderActividadesItem=({item, index}) => {
+            return (
+                <ListItem
+                    key={index}
+                    bottomDivider>
+                <Avatar source={{uri: baseUrl + item.imagen}}/>
+                    <ListItem.Content>
+                        
+                        <ListItem.Title>{item.nombre}</ListItem.Title>
+                        <ListItem.Subtitle>{item.descripcion}</ListItem.Subtitle>
+                    </ListItem.Content>
+                </ListItem> 
+            );
                     
-                    <ListItem.Title>{item.nombre}</ListItem.Title>
-                    <ListItem.Subtitle>{item.descripcion}</ListItem.Subtitle>
-                </ListItem.Content>
-            </ListItem> 
-        );
-                
-    };
+        };
 
-   
-        
-    return(
-        <ScrollView>
-           <Historia  />
-                <Card>
-                <Card.Title>"Actividades y recursos"</Card.Title>
-                <Card.Divider/>
-                <SafeAreaView>
-                    <FlatList 
-                    data={this.props.actividades.actividades}
-                    renderItem={renderActividadesItem}
-                    keyExtractor={item => item.id.toString()}
-                    />
-                    </SafeAreaView>
-                </Card>
-        </ScrollView>
-        
-    );
+        if (this.props.actividades.isLoading) {
+            return(
+                <ScrollView>
+                    <Historia />
+                        <Card>
+                            <Card.Title>"Actividades y recursos"</Card.Title>
+                            <Card.Divider/>
+                            <IndicadorActividad />
+                        </Card>
+                    </ScrollView>
+            );
+        } else if (this.props.actividades.errMess) {
+            return(
+                <View>
+                <Text>{this.props.actividades.errMess}</Text>
+                </View>
+            );
+        } else {
+    
+            
+            return(
+                <ScrollView>
+                <Historia  />
+                        <Card>
+                        <Card.Title>"Actividades y recursos"</Card.Title>
+                        <Card.Divider/>
+                        <SafeAreaView>
+                            <FlatList 
+                            data={this.props.actividades.actividades}
+                            renderItem={renderActividadesItem}
+                            keyExtractor={item => item.id.toString()}
+                            />
+                            </SafeAreaView>
+                        </Card>
+                </ScrollView>
+                
+            );
+        }
     }
 
 }
