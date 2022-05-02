@@ -23,7 +23,7 @@ function RenderComentario(props) {
 
   const comentarios = props.comentarios;
   
-  const renderCommentarioItem = ({item, index}) => {
+  const renderCommentarioItem = (item, index) => {
   
       return (
       <View key={index} style={{margin: 10}}>
@@ -38,11 +38,11 @@ function RenderComentario(props) {
         <Card>
           <Card.Title>Comentarios</Card.Title>
           <Card.Divider/>
-          <FlatList
-          data={comentarios}
-          renderItem={renderCommentarioItem}
-          keyExtractor={item => item.id.toString()}
-          />
+
+          {comentarios.map((item, index) => (
+            renderCommentarioItem(item, index)
+          ))}
+
         </Card>
       );
 }
@@ -50,6 +50,7 @@ function RenderComentario(props) {
 
 
 function RenderExcursion(props) {
+  console.log("recibo:");
 
     const excursion = props.excursion;
     
@@ -79,18 +80,11 @@ function RenderExcursion(props) {
 }
 
 class DetalleExcursion extends Component {
-  /*constructor(props) {
-      super(props);
-      this.state = {
-          excursiones: EXCURSIONES,
-          comentarios: COMENTARIOS,
-          favoritos: []
-      };
-  }*/
+
 
   marcarFavorito(excursionId) {
-    //this.setState({favoritos: this.state.favoritos.concat(excursionId)});
-    this.props.postFavorito(excursionId)
+    
+    this.props.postFavorito(excursionId);
   }
 
   render(){
@@ -99,7 +93,7 @@ class DetalleExcursion extends Component {
         <ScrollView>
           <RenderExcursion 
             excursion={this.props.excursiones.excursiones[+excursionId]} 
-            favorita={this.props.favoritos.favoritos.some(el => el === excursionId)}
+            favorita={(this.props.favoritos.favoritos).some(el => el === excursionId)}
             onPress={() => this.marcarFavorito(excursionId)}
           />
           <RenderComentario 

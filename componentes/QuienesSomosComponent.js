@@ -44,7 +44,7 @@ function Historia() {
 class QuienesSomos extends Component {
 
     render() {
-        const renderActividadesItem=({item, index}) => {
+        const renderActividadesItem = (item, index) => {
             return (
                 <ListItem
                     key={index}
@@ -87,12 +87,18 @@ class QuienesSomos extends Component {
                         <Card.Title>"Actividades y recursos"</Card.Title>
                         <Card.Divider/>
                         <SafeAreaView>
-                            <FlatList 
+                            {this.props.actividades.actividades.map((item, index) => (
+                               renderActividadesItem(item, index)
+                            ))
+                            
+                           /* <FlatList 
                             data={this.props.actividades.actividades}
                             renderItem={renderActividadesItem}
                             keyExtractor={item => item.id.toString()}
                             />
-                            </SafeAreaView>
+                            */
+                            }
+                        </SafeAreaView>
                         </Card>
                 </ScrollView>
                 
