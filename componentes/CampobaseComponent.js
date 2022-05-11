@@ -43,7 +43,7 @@ function CustomDrawerContent(props) {
     horizontal: 'never' }}>
           <View style={styles.drawerHeader}>
               <View style={{flex:1}}>
-                <Image source={require('./imagenes/logo.png')} style={styles.drawerImage} />
+                <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/appgaztaroa-93b7e.appspot.com/o/logo.png?alt=media&token=4c3a6013-85e6-4545-a545-292a7ed868e2'}} style={styles.drawerImage} />
               </View>
               <View style={{flex: 2}}>
                 <Text style={styles.drawerHeaderText}> Gaztaroa</Text>

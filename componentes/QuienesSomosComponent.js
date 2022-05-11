@@ -44,12 +44,14 @@ function Historia() {
 class QuienesSomos extends Component {
 
     render() {
+        
         const renderActividadesItem = (item, index) => {
+            console.log(item.imagen);
             return (
                 <ListItem
                     key={index}
                     bottomDivider>
-                <Avatar source={{uri: baseUrl + item.imagen}}/>
+                <Avatar source={{uri:  item.imagen}}/>
                     <ListItem.Content>
                         
                         <ListItem.Title>{item.nombre}</ListItem.Title>
