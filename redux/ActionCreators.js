@@ -171,3 +171,15 @@ export const addComentario = (excursionId, valoracion, autor, comentario,dia) =>
 
 }
 );
+export const iniciarSesion = (user) => (
+    {
+    type: ActionTypes.INICIAR_SESION,
+    payload: user
+    }
+
+);
+export const cerrarSesion = () => ({
+    type: ActionTypes.CERRAR_SESION
+}
+);
+

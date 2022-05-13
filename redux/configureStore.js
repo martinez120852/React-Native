@@ -6,6 +6,7 @@ import { comentarios } from './comentarios';
 import { cabeceras } from './cabeceras';
 import { actividades } from './actividades';
 import { favoritos } from './favoritos';
+import { sesion } from './sesion';
 
 export const ConfigureStore = () => {
 
@@ -15,7 +16,8 @@ export const ConfigureStore = () => {
             comentarios,
             cabeceras,
             actividades,
-            favoritos
+            favoritos,
+            sesion
         }),
         applyMiddleware(thunk/*, logger*/)
     );

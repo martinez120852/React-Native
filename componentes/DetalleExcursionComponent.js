@@ -1,4 +1,4 @@
-;import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { Text, View, ScrollView, Modal, Button } from 'react-native';
 import { Card, Icon, Rating, Input } from 'react-native-elements';
 import { baseUrl } from '../comun/comun';
@@ -24,7 +24,7 @@ function RenderComentario(props) {
   const comentarios = props.comentarios;
   
   const renderCommentarioItem = (item, index) => {
-  
+      //console.log(item);
       return (
       <View key={index} style={{margin: 10}}>
         <Text style={{fontSize: 14}}>{item.comentario}</Text>
@@ -40,7 +40,8 @@ function RenderComentario(props) {
           <Card.Divider/>
 
           {comentarios.map((item, index) => (
-            renderCommentarioItem(item, index)
+            
+            renderCommentarioItem((item), index)
           ))}
 
         </Card>

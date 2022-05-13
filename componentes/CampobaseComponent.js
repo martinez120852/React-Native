@@ -14,7 +14,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorGaztaroaClaro, colorGaztaroaOscuro } from '../comun/comun';
 import { connect } from 'react-redux';
 import { fetchExcursiones, fetchComentarios, fetchCabeceras, fetchActividades } from '../redux/ActionCreators';
-  
+import Login from './Login';
+import Registro from './Registro'
+
 const mapStateToProps = state => {
   return {
   excursiones: state.excursiones,
@@ -127,6 +129,57 @@ function HomeNavegador({ navigation }) {
  }
 
 
+
+ function LoginNavegador({ navigation }){
+  return (
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+      headerMode: 'screen',
+      headerTintColor: '#fff',
+      headerStyle: { backgroundColor: colorGaztaroaOscuro },
+      headerTitleStyle: { color: '#fff' },
+      headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+      
+      }}
+    >
+    <Stack.Screen
+      name="Login"
+      component={Login}
+      options={{
+      title: 'Login',
+      }}
+    />
+    </Stack.Navigator>
+    );
+ }
+
+ function RegistroNavegador({ navigation }){
+  return (
+    <Stack.Navigator
+      initialRouteName="Registro"
+      screenOptions={{
+      headerMode: 'screen',
+      headerTintColor: '#fff',
+      headerStyle: { backgroundColor: colorGaztaroaOscuro },
+      headerTitleStyle: { color: '#fff' },
+      headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+      
+      }}
+    >
+    <Stack.Screen
+      name="Registro"
+      component={Registro}
+      options={{
+      title: 'Registro',
+      }}
+    />
+    </Stack.Navigator>
+    );
+ }
+
+
+
  function DrawerNavegador() {
   return (
     <Drawer.Navigator
@@ -176,6 +229,31 @@ function HomeNavegador({ navigation }) {
             }}
         />
         <Drawer.Screen name="Contacto" component={ContactoNavegador} 
+          options={{
+            drawerIcon: ({ tintColor}) => (
+              <Icon
+              name='address-card'
+              type='font-awesome'
+              size={24}
+              color={tintColor}
+              />
+            )
+            }}
+        />
+
+        <Drawer.Screen name="Login" component={LoginNavegador} 
+          options={{
+            drawerIcon: ({ tintColor}) => (
+              <Icon
+              name='address-card'
+              type='font-awesome'
+              size={24}
+              color={tintColor}
+              />
+            )
+            }}
+        />
+        <Drawer.Screen name="Registro" component={RegistroNavegador} 
           options={{
             drawerIcon: ({ tintColor}) => (
               <Icon
